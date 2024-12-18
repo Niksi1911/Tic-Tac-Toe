@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <string>
@@ -71,10 +70,12 @@ void playmove(char p1, char p2, char board[3][3],int& turn) {
         player1CordinatesInput(x, y);
         int checkFlag = checkAlreadyUsed(x, y, board);
 
-        if (checkFlag==1)
+        while (checkFlag==1)
         {
             player1CordinatesInput(x, y);
+            checkFlag = checkAlreadyUsed(x, y, board);
         }
+        
         InputInBoard(x, y, board, turn, p1, p2);
     }
     //PLAYER 2 UNOS !
@@ -82,9 +83,10 @@ void playmove(char p1, char p2, char board[3][3],int& turn) {
     {
         player2CordinatesInput(x, y);
         int checkFlag = checkAlreadyUsed(x, y, board);
-        if (checkFlag==1)
+        while (checkFlag==1)
         {
             player2CordinatesInput(x, y);
+            checkFlag = checkAlreadyUsed(x, y, board);
         }
         InputInBoard(x, y, board, turn, p1, p2);
     }
